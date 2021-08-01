@@ -5,3 +5,7 @@
 .viewer {
   overflow-x: none;
 }
+
+img {
+  cursor: pointer;
+}
