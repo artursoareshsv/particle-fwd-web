@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import { Navbar } from "../navbar/Navbar";
 import { Car } from "../shared/car";
 import { Carservice } from "../shared/car.serivice";
@@ -14,10 +13,13 @@ class Viewer extends React.Component<any> {
     }
 
     async componentDidMount() {
-        const params = (this.props as any).match.params;
-        const carService = new Carservice();
-        const response = await carService.findById(params);
-        this.setState({ car: response })
+        const params = this.props.match?.params;
+
+        if (params) {
+            const carService = new Carservice();
+            const response = await carService.findById(params).catch(console.log);
+            this.setState({ car: response })
+        }
     }
 
     navigateBack(): void {
@@ -37,4 +39,4 @@ class Viewer extends React.Component<any> {
     }
 }
 
-export default withRouter(Viewer as any);
+export default Viewer;

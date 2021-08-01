@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { Navbar } from './Navbar';
 
 test('renders navbar', () => {
-    render(<Navbar />);
-    const linkElement = screen.getByText(/car photos/i);
+    render(<Navbar title="test" color="test" />);
+    const linkElement = screen.getByText(/test/i);
     expect(linkElement).toBeInTheDocument();
 });
